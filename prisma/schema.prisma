@@ -1,0 +1,146 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  phone         String?
+  password      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  subscription  Subscription?
+  contactMessages ContactMessage[]
+  whatsappInstance WhatsAppInstance?
+  leads         Lead[]
+}
+
+model Plan {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  description   String
+  price         Int       // em centavos
+  features      String[]  
+  stripePriceId String?   @unique
+  isPopular     Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id                  String    @id @default(cuid())
+  userId              String    @unique
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  planId              String
+  plan                Plan      @relation(fields: [planId], references: [id])
+  status              String    @default("pending") // pending, active, canceled, past_due
+  
+  // Stripe (legado)
+  stripeSubscriptionId String?  @unique
+  stripeCustomerId    String?
+  
+  billingType         String?   // PIX, CREDIT_CARD, BOLETO
+  
+  currentPeriodStart  DateTime?
+  currentPeriodEnd    DateTime?
+  
+  // Controle de mensagens
+  messagesUsed        Int       @default(0) // Mensagens já usadas
+  messageLimit        Int?      // Limite de mensagens (null = ilimitado)
+  lastMessageReset    DateTime? // Última vez que o contador foi resetado
+  
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("unread") // unread, read, replied
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model WhatsAppInstance {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  instanceName    String   
+  instanceToken   String   // Token retornado pela Uazapi
+  phoneNumber     String?  // Número conectado
+  status          String   @default("disconnected") // disconnected, connecting, connected
+  webhookUrl      String?
+  
+  // Configurações do Agente de IA
+  agentName       String?  // Nome do agente (ex: "Ricardo", "Maria")
+  aiPrompt        String?  @db.Text // System prompt personalizado do agente
+  aiEnabled       Boolean  @default(false) // Se o agente está ativo (padrão: inativo)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+
+model Lead {
+  id            String        @id @default(cuid())
+  name          String
+  phone         String        
+  email         String?
+  stage         LeadStage     @default(NEW)
+  priority      Priority      @default(MEDIUM)
+  tags          String[]      @default([])
+  notes         String?       @db.Text
+  summary       String?       @db.Text
+  lastMessage   String?       @db.Text
+  lastMessageAt DateTime?
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages      LeadMessage[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@unique([userId, phone])
+  @@index([userId])
+  @@index([phone])
+  @@index([stage])
+  @@index([priority])
+}
+
+model LeadMessage {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  content   String   @db.Text
+  fromLead  Boolean  @default(true) // true = mensagem do lead, false = resposta do bot
+  createdAt DateTime @default(now())
+
+  @@index([leadId])
+}
+
+enum LeadStage {
+  NEW           // Novo
+  CONTACTED     // Contato Feito
+  QUALIFIED     // Qualificado
+  PROPOSAL      // Proposta Enviada
+  NEGOTIATION   // Em Negociação
+  WON           // Ganho/Fechado
+  LOST          // Perdido
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
