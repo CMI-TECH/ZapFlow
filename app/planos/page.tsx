@@ -1,4 +1,4 @@
-{/*'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
@@ -64,7 +64,7 @@ export default function PlanosPage() {
   return (
     <main className="min-h-screen bg-slate-900">
       <Header />
-      
+
       <section className="pt-32 pb-24">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <motion.div
@@ -93,11 +93,10 @@ export default function PlanosPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: index * 0.1 }}
-                  className={`relative p-8 rounded-2xl border transition-all hover:-translate-y-1 ${
-                    plan?.isPopular
-                      ? 'bg-gradient-to-b from-blue-600/20 to-purple-600/20 border-blue-500/50 shadow-xl shadow-blue-500/10'
-                      : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
-                  }`}
+                  className={`relative p-8 rounded-2xl border transition-all hover:-translate-y-1 ${plan?.isPopular
+                    ? 'bg-gradient-to-b from-blue-600/20 to-purple-600/20 border-blue-500/50 shadow-xl shadow-blue-500/10'
+                    : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
+                    }`}
                 >
                   {plan?.isPopular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -129,11 +128,10 @@ export default function PlanosPage() {
                   <button
                     onClick={() => handleSubscribe(plan?.id ?? '')}
                     disabled={subscribingPlan === plan?.id}
-                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all ${
-                      plan?.isPopular
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40'
-                        : 'bg-slate-700 hover:bg-slate-600 text-white'
-                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all ${plan?.isPopular
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40'
+                      : 'bg-slate-700 hover:bg-slate-600 text-white'
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     {subscribingPlan === plan?.id ? (
                       <Loader2 className="w-5 h-5 animate-spin mx-auto" />
@@ -166,4 +164,3 @@ export default function PlanosPage() {
     </main>
   );
 }
-*/}
