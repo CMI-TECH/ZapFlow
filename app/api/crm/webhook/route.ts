@@ -8,12 +8,12 @@ import { prisma } from '@/lib/db';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { 
-      instanceToken, 
-      phoneNumber, 
+    const {
+      instanceToken,
+      phoneNumber,
       senderName,
       message,
-      fromMe 
+      fromMe
     } = body;
 
     console.log('[CRM-WEBHOOK] Recebido:', { instanceToken, phoneNumber, senderName, fromMe });
@@ -93,8 +93,9 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('[CRM-WEBHOOK] Erro:', error);
+    const message = error instanceof Error ? error.message : 'Erro desconhecido';
     return NextResponse.json(
-      { error: 'Erro interno do servidor' },
+      { error: 'Erro interno do servidor', details: message },
       { status: 500 }
     );
   }
