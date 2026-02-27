@@ -571,7 +571,7 @@ export default function DashboardPage() {
 
                   <div className="flex gap-4 mt-8">
                     <a
-                      href="https://wa.me/5562996917009?text=Olá!%20Gostaria%20de%20mudar%20meu%20plano"
+                      href="https://wa.me/556297027948?text=Olá!%20Gostaria%20de%20mudar%20meu%20plano"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 bg-white text-black text-center py-3 rounded-lg font-bold hover:bg-cyan-50 hover:scale-[1.02] transition-all"
