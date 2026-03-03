@@ -2,121 +2,153 @@ import Link from 'next/link';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 font-sans">
-      {/* Hero Section - Mantida conforme solicitado */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 animate-gradient"></div>
-
-        <nav className="relative z-10 container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/30">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 8V4H8" />
-                  <rect width="16" height="12" x="4" y="8" rx="2" />
-                  <path d="M2 14h2" />
-                  <path d="M20 14h2" />
-                  <path d="M15 13v2" />
-                  <path d="M9 13v2" />
-                </svg>
-              </div>
-              <span className="text-white font-bold text-xl tracking-tight">ZapFlow</span>
+    <div className="min-h-screen bg-[#0a0a0f] text-white font-sans antialiased">
+      
+      {/* ============================================================ */}
+      {/* NAV — Minimal, limpa, confiança imediata                     */}
+      {/* ============================================================ */}
+      <nav className="fixed top-0 w-full z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
+              <svg className="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
+            <span className="text-lg font-bold tracking-tight">
+              Zap<span className="text-emerald-400">Flow</span>
+            </span>
+          </Link>
+          
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#problema" className="text-sm text-zinc-400 hover:text-white transition-colors">O Problema</a>
+            <a href="#solucao" className="text-sm text-zinc-400 hover:text-white transition-colors">A Solução</a>
+            <a href="#prova" className="text-sm text-zinc-400 hover:text-white transition-colors">Resultados</a>
+            <a href="#preco" className="text-sm text-zinc-400 hover:text-white transition-colors">Preço</a>
+            <Link href="/login" className="text-sm text-zinc-300 hover:text-white transition-colors font-medium">Entrar</Link>
+            <Link href="/cadastro" className="bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-bold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5">
+              Começar Agora
             </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-300 hover:text-white transition font-medium">Recursos</a>
-              <a href="#testimonials" className="text-gray-300 hover:text-white transition font-medium">Depoimentos</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition font-medium">Preços</a>
-              <Link href="/login" className="text-white font-medium hover:text-cyan-400 transition">Login</Link>
-              <Link href="/cadastro" className="bg-white text-gray-900 hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg">
-                Começar Grátis
+          </div>
+        </div>
+      </nav>
+
+      {/* ============================================================ */}
+      {/* HERO — O "Porquê" (Sinek). Foco na DOR, não na ferramenta.   */}
+      {/* ============================================================ */}
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        {/* Ambient glow — sutil */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Badge de urgência */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold mb-8 tracking-wide">
+              <span className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" />
+              Enquanto você lê isso, leads estão esperando resposta
+            </div>
+
+            {/* Headline — Emocional, direto na dor */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
+              Nunca mais perca uma venda
+              <br />
+              <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                para a bagunça do WhatsApp.
+              </span>
+            </h1>
+
+            {/* Subtítulo — O "Porquê" */}
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Acreditamos que <strong className="text-white">velocidade é dinheiro</strong>. O ZapFlow organiza o caos, automatiza o repetitivo e garante que seu cliente seja atendido em <strong className="text-emerald-400">segundos</strong>, não em horas.
+            </p>
+
+            {/* CTA — Focado no resultado, não na ferramenta */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link href="/cadastro" className="group relative bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/30 hover:-translate-y-1 overflow-hidden">
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Quero parar de perder vendas
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
               </Link>
             </div>
-          </div>
-        </nav>
 
-        <div className="relative z-10 container mx-auto px-6 py-20 md:py-32">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/30 border border-purple-500/30 text-purple-300 text-sm font-medium mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                </span>
-                Atendimento Inteligente 24/7
-              </div>
-
-              <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-                Transforme seu WhatsApp em uma
-                <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"> Máquina de Vendas</span>
-              </h1>
-
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
-                Agente de IA que atende clientes, qualifica leads e agenda reuniões automaticamente. Aumente suas conversões sem aumentar a equipe.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/cadastro" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg shadow-green-500/20 transform hover:-translate-y-1">
-                  <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
-                  </svg>
-                  Testar Grátis Agora
-                </Link>
-              </div>
-
-              <div className="flex items-center space-x-6 text-sm text-gray-400">
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  Sem cartão de crédito
-                </div>
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                  </svg>
-                  Setup em 2 minutos
-                </div>
-              </div>
+            {/* Micro proof */}
+            <div className="flex items-center justify-center gap-6 text-sm text-zinc-500">
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                Setup em 2 minutos
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                Sem cartão de crédito
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                Cancele quando quiser
+              </span>
             </div>
+          </div>
 
-            <div className="relative hidden md:block">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-3xl blur-3xl opacity-30 animate-pulse-slow"></div>
-              <div className="relative bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700 shadow-2xl">
-                <div className="flex items-center space-x-3 mb-6 border-b border-gray-700 pb-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30">
-                    <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
-                    </svg>
+          {/* ======== VISUAL "ANTES E DEPOIS" ======== */}
+          <div className="mt-20 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* ANTES — O Caos */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
+                <div className="relative bg-zinc-900/80 backdrop-blur border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                    <span className="text-red-400 text-xs font-bold tracking-widest uppercase">Sem ZapFlow</span>
                   </div>
-                  <div>
-                    <div className="text-white font-bold">Assistente Comercial</div>
-                    <div className="text-green-400 text-xs flex items-center mt-1">
-                      <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5 animate-pulse"></span>
-                      Online agora
+                  <div className="space-y-3">
+                    <div className="bg-red-950/30 rounded-xl p-3 border border-red-900/30">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-red-300 text-xs font-bold">📱 WhatsApp Comercial</span>
+                        <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-auto">347</span>
+                      </div>
+                      <p className="text-zinc-500 text-xs">Mensagens não lidas acumulando...</p>
+                    </div>
+                    <div className="bg-red-950/20 rounded-xl p-3 border border-red-900/20">
+                      <p className="text-zinc-500 text-xs">😤 "Fui comprar no concorrente, vcs demoraram demais"</p>
+                      <span className="text-red-400/60 text-[10px]">Há 3 horas</span>
+                    </div>
+                    <div className="bg-red-950/20 rounded-xl p-3 border border-red-900/20">
+                      <p className="text-zinc-500 text-xs">😡 "Alguém pode me responder???"</p>
+                      <span className="text-red-400/60 text-[10px]">Há 5 horas</span>
                     </div>
                   </div>
+                  <p className="text-red-400/80 text-xs mt-4 font-medium text-center">💸 R$ 12.400/mês perdidos em vendas</p>
                 </div>
+              </div>
 
-                <div className="space-y-4">
-                  <div className="bg-gray-700/50 rounded-2xl rounded-tl-none p-4 max-w-[90%]">
-                    <p className="text-gray-300 text-sm">Olá! Gostaria de saber os preços para revenda.</p>
-                    <span className="text-gray-500 text-xs mt-1 block">14:32</span>
+              {/* DEPOIS — A Ordem */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-emerald-500/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity" />
+                <div className="relative bg-zinc-900/80 backdrop-blur border border-emerald-500/20 rounded-2xl p-6 hover:border-emerald-500/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 bg-emerald-500 rounded-full" />
+                    <span className="text-emerald-400 text-xs font-bold tracking-widest uppercase">Com ZapFlow</span>
                   </div>
-
-                  <div className="bg-green-600/20 border border-green-500/30 rounded-2xl rounded-tr-none p-4 ml-auto max-w-[90%] shadow-sm">
-                    <p className="text-gray-100 text-sm">Olá! 🚀 Temos uma tabela especial para revendedores com até 30% de desconto. Quer que eu te envie o PDF agora?</p>
-                    <span className="text-green-200/60 text-xs flex items-center justify-end mt-1">
-                      14:32
-                      <svg className="w-3.5 h-3.5 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                      </svg>
-                    </span>
+                  <div className="space-y-3">
+                    <div className="bg-emerald-950/30 rounded-xl p-3 border border-emerald-900/30">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-emerald-300 text-xs font-bold">✅ Todas as conversas respondidas</span>
+                        <span className="bg-emerald-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-auto">0</span>
+                      </div>
+                      <p className="text-zinc-500 text-xs">IA respondeu em 3 segundos cada</p>
+                    </div>
+                    <div className="bg-emerald-950/20 rounded-xl p-3 border border-emerald-900/20">
+                      <p className="text-zinc-400 text-xs">🤖 "Olá! Temos desconto especial para você. Posso enviar o catálogo?"</p>
+                      <span className="text-emerald-400/60 text-[10px]">Agora • Resposta automática</span>
+                    </div>
+                    <div className="bg-emerald-950/20 rounded-xl p-3 border border-emerald-900/20">
+                      <p className="text-zinc-400 text-xs">😄 "Que rápido! Sim, por favor!"</p>
+                      <span className="text-emerald-400/60 text-[10px]">Há 1 segundo • Lead qualificado ✓</span>
+                    </div>
                   </div>
-
-                  <div className="bg-gray-700/50 rounded-2xl rounded-tl-none p-4 max-w-[90%]">
-                    <p className="text-gray-300 text-sm">Sim, por favor!</p>
-                    <span className="text-gray-500 text-xs mt-1 block">14:33</span>
-                  </div>
+                  <p className="text-emerald-400/80 text-xs mt-4 font-medium text-center">📈 +300% em conversões este mês</p>
                 </div>
               </div>
             </div>
@@ -124,265 +156,334 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Social Proof (Stats) */}
-      <section className="bg-gray-900/80 py-10 border-y border-gray-800">
+      {/* ============================================================ */}
+      {/* SOCIAL PROOF — Números que geram confiança                    */}
+      {/* ============================================================ */}
+      <section className="py-16 border-y border-white/5 bg-zinc-950/50">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800/0 md:divide-gray-800">
-            <div className="p-4">
-              <div className="text-4xl font-extrabold text-white mb-2 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">+5.000</div>
-              <div className="text-gray-400 font-medium">Empresas Ativas</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-extrabold text-white mb-2">2M+</div>
-              <div className="text-gray-400 font-medium">Conversas/Mês</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-extrabold text-white mb-2">98%</div>
-              <div className="text-gray-400 font-medium">Satisfação</div>
-            </div>
-            <div className="p-4">
-              <div className="text-4xl font-extrabold text-white mb-2">300%</div>
-              <div className="text-gray-400 font-medium">Aumento em Vendas</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: '+5.000', label: 'Empresas confiam' },
+              { value: '2M+', label: 'Mensagens/mês' },
+              { value: '3s', label: 'Tempo médio de resposta' },
+              { value: '300%', label: 'Mais conversões' },
+            ].map((stat, i) => (
+              <div key={i} className="space-y-1">
+                <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">{stat.value}</div>
+                <div className="text-zinc-500 text-sm font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 md:py-32 bg-gray-900">
+      {/* ============================================================ */}
+      {/* O PROBLEMA — Seção que articula a dor (antes da solução)      */}
+      {/* ============================================================ */}
+      <section id="problema" className="py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Recursos que <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Impulsionam Vendas</span>
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="text-red-400 text-xs font-bold tracking-widest uppercase mb-4 block">O problema que ninguém fala</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              Seu WhatsApp está <span className="text-red-400">sangrando dinheiro</span> agora mesmo.
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Tudo que você precisa para automatizar atendimento e qualificar leads no WhatsApp em uma única plataforma.
+            <p className="text-zinc-400 text-lg leading-relaxed">
+              Enquanto sua equipe almoça, dorme ou atende outro cliente, dezenas de mensagens ficam sem resposta. Cada minuto de silêncio é um lead quente esfriando — e indo para o concorrente.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-gray-800 rounded-2xl p-8 hover:bg-gray-750 transition duration-300 border border-gray-700 hover:border-purple-500/50 group">
-              <div className="w-14 h-14 bg-purple-600/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Atendimento 24/7</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Nunca mais deixe um cliente esperando. Nossa IA responde instantaneamente, tira dúvidas e mantém o cliente engajado.
-              </p>
+          {/* Bento Grid — Dores reais */}
+          <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 hover:border-red-500/30 transition-colors group">
+              <div className="text-3xl mb-4">⏰</div>
+              <h3 className="text-lg font-bold text-white mb-2">Demora que mata</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">78% dos clientes compram de quem responde primeiro. Se você demora 10 minutos, já perdeu.</p>
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-gray-800 rounded-2xl p-8 hover:bg-gray-750 transition duration-300 border border-gray-700 hover:border-cyan-500/50 group">
-              <div className="w-14 h-14 bg-cyan-600/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Qualificação Automática</h3>
-              <p className="text-gray-400 leading-relaxed">
-                A IA filtra os curiosos e entrega apenas os leads quentes para sua equipe comercial fechar o negócio.
-              </p>
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 hover:border-red-500/30 transition-colors group">
+              <div className="text-3xl mb-4">🤷</div>
+              <h3 className="text-lg font-bold text-white mb-2">O "estava no celular do fulano"</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">Conversas perdidas entre atendentes, histórico que some, leads que ninguém sabe de quem é.</p>
             </div>
-
-            {/* Card 3 */}
-            <div className="bg-gray-800 rounded-2xl p-8 hover:bg-gray-750 transition duration-300 border border-gray-700 hover:border-green-500/50 group">
-              <div className="w-14 h-14 bg-green-600/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Agendamento Direto</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Conecte sua agenda e deixe a IA marcar reuniões e demonstrações sozinha, enviando lembretes automáticos.
-              </p>
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 hover:border-red-500/30 transition-colors group">
+              <div className="text-3xl mb-4">🌙</div>
+              <h3 className="text-lg font-bold text-white mb-2">Fora do horário = fora da venda</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">Seu melhor vendedor não trabalha de noite. Mas seu cliente pesquisa e compra às 23h.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* NEW: Testimonials Section (Social Proof) */}
-      <section id="testimonials" className="py-20 bg-gray-800/30 border-y border-gray-800">
+      {/* ============================================================ */}
+      {/* A SOLUÇÃO — Features orientadas ao "Porquê"                  */}
+      {/* ============================================================ */}
+      <section id="solucao" className="py-20 md:py-28 bg-zinc-950/50 border-y border-white/5">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              O que nossos clientes dizem
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-4 block">A solução</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              Seu WhatsApp, agora com <span className="text-emerald-400">superpoderes</span>.
             </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700 relative">
-              <div className="text-4xl text-purple-500 absolute top-4 left-6">"</div>
-              <p className="text-gray-300 mb-6 mt-4 relative z-10 italic">
-                "Desde que implementamos o ZapFlow, recuperamos 40% dos clientes que chamavam fora do horário comercial. A IA paga a si mesma na primeira semana."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-600 rounded-full mr-3 flex items-center justify-center text-white font-bold">R</div>
-                <div>
-                  <div className="text-white font-bold">Ricardo Alves</div>
-                  <div className="text-gray-400 text-xs">Diretor Comercial, Imobiliária Viva</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700 relative">
-              <div className="text-4xl text-cyan-500 absolute top-4 left-6">"</div>
-              <p className="text-gray-300 mb-6 mt-4 relative z-10 italic">
-                "Simplesmente a melhor ferramenta de automação. Configurei em 10 minutos e agora meu suporte funciona sozinho. Incrível!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-600 rounded-full mr-3 flex items-center justify-center text-white font-bold">J</div>
-                <div>
-                  <div className="text-white font-bold">Júlia Mattos</div>
-                  <div className="text-gray-400 text-xs">Fundadora, Clínica Sorriso</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700 relative">
-              <div className="text-4xl text-green-500 absolute top-4 left-6">"</div>
-              <p className="text-gray-300 mb-6 mt-4 relative z-10 italic">
-                "Minha equipe de vendas parou de perder tempo qualificando curiosos. O lead já chega pronto para comprar. Recomendo demais."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-600 rounded-full mr-3 flex items-center justify-center text-white font-bold">M</div>
-                <div>
-                  <div className="text-white font-bold">Marcos Paulo</div>
-                  <div className="text-gray-400 text-xs">CEO, TechEdu</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section (Só Free Plan) */}
-      <section id="pricing" className="py-20 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Comece sem gastar nada
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Experimente o poder da IA no seu WhatsApp com nosso plano gratuito. Sem pegadinhas.
+            <p className="text-zinc-400 text-lg">
+              Não vendemos "software". Vendemos a certeza de que nenhum cliente será ignorado.
             </p>
           </div>
 
-          <div className="flex justify-center">
-            {/* Free Plan Card - Highlighted */}
-            <div className="w-full max-w-md bg-gray-800 rounded-3xl p-8 border-2 border-purple-500/50 relative shadow-2xl shadow-purple-900/20 transform hover:-translate-y-2 transition duration-300">
-              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl uppercase tracking-wider">
-                Popular
+          {/* Bento Grid — Benefícios (não funcionalidades) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            
+            {/* Card 1 — Multi-atendimento */}
+            <div className="md:col-span-2 bg-gradient-to-br from-zinc-900 to-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300 group">
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                </div>
+                <span className="text-emerald-400/60 text-xs font-bold tracking-widest uppercase">Equipe</span>
               </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Sua equipe unida, seu cliente atendido.</h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Acabe com a desculpa de "estava no celular do fulano". Um número, múltiplos atendentes, controle total. Cada conversa tem dono, histórico e contexto.
+              </p>
+            </div>
+
+            {/* Card 2 — Chatbot IA */}
+            <div className="bg-gradient-to-br from-zinc-900 to-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Atendimento imediato, mesmo enquanto você dorme.</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Liberte sua equipe de responder "qual o horário de funcionamento" 50 vezes por dia. A IA faz isso em 3 segundos.
+              </p>
+            </div>
+
+            {/* Card 3 — Dashboard */}
+            <div className="bg-gradient-to-br from-zinc-900 to-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">O fim do "eu acho".</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Tenha certeza de quem vende, quem demora e onde está o gargalo da sua operação. Dados reais, decisões inteligentes.
+              </p>
+            </div>
+
+            {/* Card 4 — CRM integrado */}
+            <div className="bg-gradient-to-br from-zinc-900 to-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-amber-500/30 transition-all duration-300 group">
+              <div className="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Cada lead vira dinheiro, não planilha.</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                CRM integrado que transforma conversas em oportunidades e acompanha o funil automaticamente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* PROVA SOCIAL — Depoimentos com contexto emocional            */}
+      {/* ============================================================ */}
+      <section id="prova" className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-zinc-500 text-xs font-bold tracking-widest uppercase mb-4 block">Resultados reais</span>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Quem usou, não <span className="text-emerald-400">volta atrás</span>.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "Desde que implementamos o ZapFlow, recuperamos 40% dos clientes que chamavam fora do horário. A IA paga a si mesma na primeira semana.",
+                name: "Ricardo Alves",
+                role: "Diretor Comercial, Imobiliária Viva",
+                initial: "R",
+                color: "emerald",
+              },
+              {
+                quote: "Minha equipe parou de perder tempo qualificando curiosos. O lead já chega pronto para comprar. Resultado: 3x mais fechamentos.",
+                name: "Marcos Paulo",
+                role: "CEO, TechEdu",
+                initial: "M",
+                color: "cyan",
+              },
+              {
+                quote: "Configurei em 10 minutos e agora meu suporte funciona sozinho. Reduzi custos com atendimento em 60% — sem demitir ninguém.",
+                name: "Júlia Mattos",
+                role: "Fundadora, Clínica Sorriso",
+                initial: "J",
+                color: "purple",
+              },
+            ].map((t, i) => (
+              <div key={i} className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-colors">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <p className="text-zinc-300 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
+                <div className="flex items-center gap-3">
+                  <div className={`w-9 h-9 bg-${t.color}-500/20 border border-${t.color}-500/30 rounded-full flex items-center justify-center text-${t.color}-400 text-sm font-bold`}>{t.initial}</div>
+                  <div>
+                    <div className="text-white text-sm font-semibold">{t.name}</div>
+                    <div className="text-zinc-500 text-xs">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* CMI / ENER — Selo de Confiança (o "pai rico")                 */}
+      {/* ============================================================ */}
+      <section className="py-20 border-y border-white/5 bg-zinc-950/50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800/50 border border-zinc-700/50 rounded-3xl p-10 md:p-14 relative overflow-hidden">
+            {/* Subtle accent */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+            
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-2xl flex items-center justify-center">
+                  <svg className="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+                  Não somos mais um "aplicativo de zap".
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  O ZapFlow é desenvolvido pela <strong className="text-white">CMI Tecnologia</strong>, com o mesmo rigor técnico usado em obras de infraestrutura e inteligência artificial pelo <strong className="text-white">Grupo Ener</strong>. Segurança, estabilidade e engenharia de verdade para o canal mais crítico da sua empresa.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* PREÇO — Simples, sem confusão                                */}
+      {/* ============================================================ */}
+      <section id="preco" className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Comece sem gastar nada.</h2>
+            <p className="text-zinc-400 text-lg">Sem pegadinhas. Sem surpresas na fatura.</p>
+          </div>
+
+          <div className="max-w-md mx-auto">
+            <div className="bg-zinc-900/80 border-2 border-emerald-500/30 rounded-3xl p-8 relative hover:border-emerald-500/60 transition-colors hover:shadow-2xl hover:shadow-emerald-500/10">
+              {/* Badge */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-xs font-bold px-4 py-1 rounded-full">
+                Mais Popular
+              </div>
+              
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Plano Inicial</h3>
-                <p className="text-gray-400">Ideal para testar e validar.</p>
+                <h3 className="text-xl font-bold text-white mb-1">Plano Inicial</h3>
+                <p className="text-zinc-500 text-sm">Ideal para validar e começar a vender mais.</p>
               </div>
-              <div className="mb-8 border-b border-gray-700 pb-8">
-                <div className="flex items-baseline">
+
+              <div className="mb-8 pb-6 border-b border-zinc-800">
+                <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-extrabold text-white">R$ 0</span>
-                  <span className="text-gray-400 ml-2 text-xl">/mês</span>
+                  <span className="text-zinc-500 text-lg">/mês</span>
                 </div>
-                <p className="text-green-400 text-sm mt-2 font-medium">Vitalício. Sem cartão de crédito.</p>
+                <p className="text-emerald-400 text-sm mt-2 font-medium">Vitalício. Sem cartão de crédito.</p>
               </div>
-              <ul className="space-y-4 mb-8">
+
+              <ul className="space-y-3 mb-8">
                 {[
-                  "200 mensagens automáticas/mês",
-                  "IA treinada para seu negócio",
-                  "1 número de WhatsApp conectado",
-                  "Painel de Analytics Básico",
-                  "Suporte via Comunidade",
-                  "Acesso imediato"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-300">
-                    <svg className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                    </svg>
+                  '200 mensagens automáticas/mês',
+                  'IA treinada para seu negócio',
+                  '1 número de WhatsApp conectado',
+                  'CRM com funil de vendas',
+                  'Dashboard com métricas reais',
+                  'Suporte via comunidade',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-zinc-300 text-sm">
+                    <svg className="w-4.5 h-4.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/cadastro" className="block w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 text-center shadow-lg hover:shadow-purple-500/30">
-                Criar Conta Grátis
+
+              <Link href="/cadastro" className="block w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-4 rounded-xl transition-all text-center hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5">
+                Quero parar de perder vendas
               </Link>
-              <p className="text-center text-gray-500 text-xs mt-4">
-                Não requer cartão de crédito • Cancele quando quiser
-              </p>
+              <p className="text-center text-zinc-600 text-xs mt-3">Upgrade disponível a qualquer momento</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Mais persuasivo */}
+      {/* ============================================================ */}
+      {/* CTA FINAL — Urgência + Emoção                                */}
+      {/* ============================================================ */}
       <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/30 to-cyan-950/30" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="rounded-3xl bg-gradient-to-r from-purple-900 to-indigo-900 p-12 md:p-20 text-center border border-purple-500/30 shadow-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Pare de perder vendas no WhatsApp
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              Seu concorrente já está usando IA.<br />
+              <span className="text-emerald-400">Não fique para trás.</span>
             </h2>
-            <p className="text-xl text-indigo-200 mb-10 max-w-2xl mx-auto">
-              Seu concorrente já está usando IA. Não fique para trás. Configure seu robô de vendas em 2 minutos e veja os resultados hoje mesmo.
+            <p className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
+              Cada hora sem o ZapFlow é dinheiro escorrendo pelo ralo do seu WhatsApp bagunçado. Configure em 2 minutos.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/cadastro" className="w-full sm:w-auto bg-white text-purple-900 hover:bg-gray-100 font-bold py-4 px-10 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl text-lg flex items-center justify-center">
-                Começar Agora - É Grátis
-                <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                </svg>
-              </Link>
-            </div>
+            <Link href="/cadastro" className="inline-flex items-center gap-2 bg-white text-black font-bold text-lg px-10 py-4 rounded-xl hover:bg-zinc-100 transition-all hover:shadow-2xl hover:-translate-y-1">
+              Começar Agora — É Grátis
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"/></svg>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-950 border-t border-gray-900 py-12">
+      {/* ============================================================ */}
+      {/* FOOTER — Limpo e profissional                                */}
+      {/* ============================================================ */}
+      <footer className="border-t border-white/5 bg-[#050508] py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-cyan-500 rounded flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 8V4H8" />
-                    <rect width="16" height="12" x="4" y="8" rx="2" />
-                    <path d="M2 14h2" />
-                    <path d="M20 14h2" />
-                    <path d="M15 13v2" />
-                    <path d="M9 13v2" />
-                  </svg>
+          <div className="grid md:grid-cols-4 gap-8 mb-10">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-7 h-7 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-md flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
                 </div>
-                <span className="text-white font-bold text-lg">ZapFlow</span>
+                <span className="text-white font-bold">ZapFlow</span>
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Automação inteligente para empresas que querem vender mais gastando menos tempo.
+              <p className="text-zinc-600 text-sm leading-relaxed">
+                Velocidade é respeito. Atendimento inteligente para empresas que não aceitam perder vendas.
               </p>
             </div>
-            {/* Links do footer mantidos simplificados para foco na conversão */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Produto</h4>
-              <ul className="space-y-2 text-gray-500 text-sm">
-                <li><a href="#features" className="hover:text-purple-400 transition">Recursos</a></li>
-                <li><a href="#pricing" className="hover:text-purple-400 transition">Preço</a></li>
-                <li><Link href="/login" className="hover:text-purple-400 transition">Login</Link></li>
+              <h4 className="text-white font-semibold text-sm mb-3">Produto</h4>
+              <ul className="space-y-2 text-zinc-500 text-sm">
+                <li><a href="#solucao" className="hover:text-emerald-400 transition">Recursos</a></li>
+                <li><a href="#preco" className="hover:text-emerald-400 transition">Preço</a></li>
+                <li><Link href="/login" className="hover:text-emerald-400 transition">Login</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-500 text-sm">
-                <li><a href="#" className="hover:text-purple-400 transition">Privacidade</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition">Termos</a></li>
+              <h4 className="text-white font-semibold text-sm mb-3">Legal</h4>
+              <ul className="space-y-2 text-zinc-500 text-sm">
+                <li><a href="#" className="hover:text-emerald-400 transition">Privacidade</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition">Termos de Uso</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-gray-500 text-sm">
-                <li><a href="#" className="hover:text-purple-400 transition">suporte@zapflow.ai</a></li>
+              <h4 className="text-white font-semibold text-sm mb-3">Contato</h4>
+              <ul className="space-y-2 text-zinc-500 text-sm">
+                <li><a href="mailto:suporte@zapflow.ai" className="hover:text-emerald-400 transition">suporte@zapflow.ai</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-900 pt-8 text-center text-gray-600 text-sm">
-            <p>&copy; 2024 ZapFlow AI. Todos os direitos reservados.</p>
+          <div className="border-t border-zinc-900 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-zinc-700 text-xs">&copy; {new Date().getFullYear()} ZapFlow — CMI Tecnologia. Todos os direitos reservados.</p>
+            <p className="text-zinc-800 text-xs">Desenvolvido com engenharia de verdade.</p>
           </div>
         </div>
       </footer>
