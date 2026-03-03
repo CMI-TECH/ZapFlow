@@ -21,6 +21,7 @@ model User {
   contactMessages ContactMessage[]
   whatsappInstance WhatsAppInstance?
   leads         Lead[]
+  pipelines     Pipeline[]
 }
 
 model Plan {
@@ -93,12 +94,37 @@ model WhatsAppInstance {
 }
 
 
+model Pipeline {
+  id        String          @id @default(cuid())
+  name      String
+  userId    String
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isDefault Boolean         @default(false)
+  stages    PipelineStage[]
+  leads     Lead[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@index([userId])
+}
+
+model PipelineStage {
+  id         String   @id @default(cuid())
+  name       String
+  color      String   @default("#10b981")
+  order      Int
+  pipelineId String
+  pipeline   Pipeline @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+
+  @@index([pipelineId])
+}
+
 model Lead {
   id            String        @id @default(cuid())
   name          String
   phone         String        
   email         String?
-  stage         LeadStage     @default(NEW)
+  stage         String        @default("Novo")
   priority      Priority      @default(MEDIUM)
   tags          String[]      @default([])
   notes         String?       @db.Text
@@ -107,6 +133,8 @@ model Lead {
   lastMessageAt DateTime?
   userId        String
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pipelineId    String?
+  pipeline      Pipeline?     @relation(fields: [pipelineId], references: [id], onDelete: SetNull)
   messages      LeadMessage[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -116,6 +144,7 @@ model Lead {
   @@index([phone])
   @@index([stage])
   @@index([priority])
+  @@index([pipelineId])
 }
 
 model LeadMessage {
@@ -129,15 +158,7 @@ model LeadMessage {
   @@index([leadId])
 }
 
-enum LeadStage {
-  NEW           // Novo
-  CONTACTED     // Contato Feito
-  QUALIFIED     // Qualificado
-  PROPOSAL      // Proposta Enviada
-  NEGOTIATION   // Em Negociação
-  WON           // Ganho/Fechado
-  LOST          // Perdido
-}
+// LeadStage enum removed — stages are now dynamic via PipelineStage model
 
 enum Priority {
   LOW
